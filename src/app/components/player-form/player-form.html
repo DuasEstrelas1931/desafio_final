@@ -1,0 +1,48 @@
+<div class="form-container">
+  <h3>Adicionar Novo Jogador</h3>
+  <form (ngSubmit)="addPlayer()" #playerForm="ngForm">
+    <div class="input-group">
+      <label for="name">Nome</label>
+      <input [(ngModel)]="player.name" id="name" name="name" placeholder="Nome do Jogador" required />
+    </div>
+
+    <div class="input-group">
+      <label for="club">Clube</label>
+      <input [(ngModel)]="player.club" id="club" name="club" placeholder="Clube" required />
+    </div>
+
+    <div class="input-group">
+      <label for="nationality">Nacionalidade</label>
+      <input [(ngModel)]="player.nationality" id="nationality" name="nationality" placeholder="Nacionalidade" required />
+    </div>
+
+    <div class="input-group">
+      <label for="position">Posição</label>
+      <input [(ngModel)]="player.position" id="position" name="position" placeholder="Posição" required />
+    </div>
+
+    <div class="input-group">
+      <label for="image">URL da Imagem</label>
+      <input [(ngModel)]="player.image" id="image" name="image" placeholder="URL da Imagem" required />
+    </div>
+
+    <div class="stats-grid">
+      <div class="input-group">
+        <label for="overall">Overall</label>
+        <input [(ngModel)]="player.statistics.Overall" id="overall" name="overall" type="number" min="0" max="99" placeholder="0-99" required />
+      </div>
+
+      <div class="input-group">
+        <label for="pace">Pace</label>
+        <input [(ngModel)]="player.statistics.Pace" id="pace" name="pace" type="number" min="0" max="99" placeholder="0-99" required />
+      </div>
+
+      <div class="input-group">
+        <label for="shooting">Shooting</label>
+        <input [(ngModel)]="player.statistics.Shooting" id="shooting" name="shooting" type="number" min="0" max="99" placeholder="0-99" required />
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="!playerForm.valid">Salvar Jogador</button>
+  </form>
+</div>

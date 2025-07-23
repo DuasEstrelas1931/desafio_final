@@ -1,0 +1,163 @@
+[
+    {
+      "id": 1,
+      "name": "Real Madrid",
+      "logo": "https://tse1.mm.bing.net/th/id/OIP.U8q0lUr8O7s49FjQw-ywHQHaNL?rs=1&pid=ImgDetMain&o=7&rm=3"
+    },
+    {
+      "id": 2,
+      "name": "Barcelona",
+      "logo": "https://tse3.mm.bing.net/th/id/OIP.Yj3NcIvYovBuuKkFxgzL9wHaEK?rs=1&pid=ImgDetMain&o=7&rm=3"
+    },
+    {
+      "id": 3,
+      "name": "Manchester City",
+      "logo": "https://th.bing.com/th/id/R.0285d32d8c45a513607ba59d213e624e?rik=f9%2ffR9D9Jk5V2w&pid=ImgRaw&r=0"
+    },
+    {
+      "id": 4,
+      "name": "Paris Saint-Germain",
+      "logo": "https://tse3.mm.bing.net/th/id/OIP.59fmDz-5KBj8qaL_AFjO9AHaEK?rs=1&pid=ImgDetMain&o=7&rm=3"
+    },
+    {
+      "id": 5,
+      "name": "Bayern Munich",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/5/53/Real_Madrid_CF.svg"
+    },
+    {
+      "id": 6,
+      "name": "Manchester United",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/5/53/Real_Madrid_CF.svg"
+    },
+    {
+      "id": 7,
+      "name": "Inter Milan",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/5/53/Real_Madrid_CF.svg"
+    },
+    {
+      "id": 8,
+      "name": "AC Milan",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/5/53/Real_Madrid_CF.svg"
+    },
+    {
+      "id": 9,
+      "name": "Juventus",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/5/53/Real_Madrid_CF.svg"
+    },
+    {
+      "id": 10,
+      "name": "Chelsea",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/5/53/Real_Madrid_CF.svg"
+    },
+    {
+      "id": 11,
+      "name": "Atletico Madrid",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/5/53/Real_Madrid_CF.svg"
+    },
+    {
+      "id": 12,
+      "name": "Liverpool",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/5/53/Real_Madrid_CF.svg"
+    },
+    {
+      "id": 13,
+      "name": "Napoli",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/5/53/Real_Madrid_CF.svg"
+    },
+    {
+      "id": 14,
+      "name": "Borussia Dortmund",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/5/53/Real_Madrid_CF.svg"
+    },
+    {
+      "id": 15,
+      "name": "RB Leipzig",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/5/53/Real_Madrid_CF.svg"
+    },
+    {
+      "id": 16,
+      "name": "Benfica",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/5/53/Real_Madrid_CF.svg"
+    },
+    {
+      "id": 17,
+      "name": "Porto",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/5/53/Real_Madrid_CF.svg"
+    },
+    {
+      "id": 18,
+      "name": "Shakhtar Donetsk",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/5/53/Real_Madrid_CF.svg"
+    },
+    {
+      "id": 19,
+      "name": "Celtic",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/5/53/Real_Madrid_CF.svg"
+    },
+    {
+      "id": 20,
+      "name": "Galatasaray",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/5/53/Real_Madrid_CF.svg"
+    },
+    {
+      "id": 21,
+      "name": "Feyenoord",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/5/53/Real_Madrid_CF.svg"
+    },
+    {
+      "id": 22,
+      "name": "Lazio",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/5/53/Real_Madrid_CF.svg"
+    },
+    {
+      "id": 23,
+      "name": "Real Sociedad",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/5/53/Real_Madrid_CF.svg"
+    },
+    {
+      "id": 24,
+      "name": "Sevilla",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/5/53/Real_Madrid_CF.svg"
+    },
+    {
+      "id": 25,
+      "name": "Union Berlin",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/5/53/Real_Madrid_CF.svg"
+    },
+    {
+      "id": 26,
+      "name": "Newcastle United",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/5/53/Real_Madrid_CF.svg"
+    },
+    {
+      "id": 27,
+      "name": "Copenhagen",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/5/53/Real_Madrid_CF.svg"
+    },
+    {
+      "id": 28,
+      "name": "Red Star Belgrade",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/5/53/Real_Madrid_CF.svg"
+    },
+    {
+      "id": 29,
+      "name": "Lens",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/5/53/Real_Madrid_CF.svg"
+    },
+    {
+      "id": 30,
+      "name": "Antwerp",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/5/53/Real_Madrid_CF.svg"
+    },
+    {
+      "id": 31,
+      "name": "Young Boys",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/5/53/Real_Madrid_CF.svg"
+    },
+    {
+      "id": 32,
+      "name": "Braga",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/5/53/Real_Madrid_CF.svg"
+    }
+  ]
+  

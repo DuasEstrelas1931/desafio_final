@@ -1,0 +1,24 @@
+<div class="carousel-container">
+  <button class="carousel-button prev" (click)="prev()">❮</button>
+
+  <div class="carousel-wrapper">
+    <div class="carousel">
+      <app-player-card
+        *ngFor="let player of players; let i = index"
+        [player]="player"
+        [class.active]="i === currentIndex"
+        [style.margin-left]="i === 0 ? '0' : ''">
+      </app-player-card>
+    </div>
+  </div>
+
+  <button class="carousel-button next" (click)="next()">❯</button>
+</div>
+
+<div class="carousel-indicators" *ngIf="players && players.length > 1">
+  <span
+    *ngFor="let player of players; let i = index"
+    [class.active]="i === currentIndex"
+    (click)="goToSlide(i)">
+  </span>
+</div>

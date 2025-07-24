@@ -1,1 +1,11 @@
-<p>clubs works!</p>
+<div class="clubs-container">
+  <h3>Clubes Participantes</h3>
+  <div class="carousel-wrapper">
+    <div class="club-carousel" [style.transform]="'translateX(' + offset + 'px)'">
+      <div class="club-item" *ngFor="let club of duplicatedClubs">
+        <img [src]="club.logo" [alt]="club.name" class="club-logo">
+        <p class="club-name">{{ club.name }}</p>
+      </div>
+    </div>
+  </div>
+</div>

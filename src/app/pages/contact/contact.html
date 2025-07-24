@@ -1,0 +1,78 @@
+<div class="contact-page">
+  <div class="contact-container">
+    <div class="contact-form">
+      <h2>Fale Conosco</h2>
+      
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
+    <!-- Campo Nome -->
+    <div class="form-group" [class.invalid]="f['name'].invalid && (f['name'].touched || submitted)">
+      <label for="name">Nome</label>
+      <input 
+        type="text" 
+        id="name" 
+        formControlName="name"
+        [class.is-invalid]="f['name'].invalid && (f['name'].touched || submitted)">
+      
+      <div *ngIf="f['name'].invalid && (f['name'].touched || submitted)" class="error-message">
+        <span *ngIf="f['name'].errors?.['required']">Nome é obrigatório</span>
+        <span *ngIf="f['name'].errors?.['minlength']">Mínimo 3 caracteres</span>
+      </div>
+    </div>
+
+    <!-- Campo Email -->
+    <div class="form-group" [class.invalid]="f['email'].invalid && (f['email'].touched || submitted)">
+      <label for="email">Email</label>
+      <input 
+        type="email" 
+        id="email" 
+        formControlName="email"
+        [class.is-invalid]="f['email'].invalid && (f['email'].touched || submitted)">
+      
+      <div *ngIf="f['email'].invalid && (f['email'].touched || submitted)" class="error-message">
+        <span *ngIf="f['email'].errors?.['required']">Email é obrigatório</span>
+        <span *ngIf="f['email'].errors?.['email']">Email inválido</span>
+      </div>
+    </div>
+
+    <!-- Campo Mensagem -->
+    <div class="form-group" [class.invalid]="f['message'].invalid && (f['message'].touched || submitted)">
+      <label for="message">Mensagem</label>
+      <textarea 
+        id="message" 
+        formControlName="message"
+        rows="5"
+        [class.is-invalid]="f['message'].invalid && (f['message'].touched || submitted)"></textarea>
+      
+      <div *ngIf="f['message'].invalid && (f['message'].touched || submitted)" class="error-message">
+        <span *ngIf="f['message'].errors?.['required']">Mensagem é obrigatória</span>
+        <span *ngIf="f['message'].errors?.['minlength']">Mínimo 10 caracteres</span>
+      </div>
+    </div>
+
+    <button 
+      type="submit" 
+      [disabled]="isLoading"
+      class="submit-btn">
+      
+      <span *ngIf="!isLoading">Enviar Mensagem</span>
+      <span *ngIf="isLoading">
+        <i class="fas fa-spinner fa-spin"></i> Enviando...
+      </span>
+    </button>
+  </form>
+
+    </div>
+
+    <div class="image-info-container">
+      <div class="champions-image">
+        <img src="logo-champions.jpg" alt="Troféu da Champions League">
+      </div>
+      <div class="contact-info">
+        <h3>Informações de Contato</h3>
+        <p><i class="fas fa-envelope"></i> contato&#64;timacochampions.com</p>
+        <p><i class="fas fa-phone"></i> (71) 98765-4321</p>
+        <p><i class="fas fa-map-marker-alt"></i> Av. Vasco da Gama, 1000 - Salvador</p>
+      </div>
+    </div>
+  </div>
+</div>

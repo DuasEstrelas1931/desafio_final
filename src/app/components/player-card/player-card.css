@@ -1,81 +1,117 @@
 .card {
+  width: 240px; /* Largura fixa */
   background: linear-gradient(135deg, #003366, #001c3d);
-  border-radius: 15px;
+  border-radius: 12px;
   overflow: hidden;
   color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  width: 100%;
-  text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
-  position: relative;
+  transition: transform 0.3s;
+  margin: 0 auto; /* Centraliza o card */
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .card-img {
   width: 100%;
-  height: 180px;
+  height: 160px; /* Altura fixa para a imagem */
   object-fit: cover;
   border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .card-body {
-  padding: 1.5rem;
+  padding: 16px;
 }
 
 .card-body h4 {
-  margin: 0 0 0.5rem;
+  margin: 0 0 8px 0;
   font-size: 1.2rem;
-  color: #fff;
+  text-align: center;
 }
 
 .card-body p {
-  margin: 0.3rem 0;
-  color: #ddd;
+  margin: 4px 0;
   font-size: 0.9rem;
+  text-align: center;
+  color: #ddd;
 }
 
-.btn {
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
+.quick-stats {
+  display: flex;
+  justify-content: space-around;
+  margin: 12px 0;
+}
+
+.quick-stats span {
   font-weight: bold;
-  margin-top: 1rem;
+  font-size: 1.1rem;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.btn-select, .btn-compare {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
   transition: all 0.3s;
 }
 
-.btn-primary {
+.btn-select {
   background-color: #007bff;
   color: white;
 }
 
-.btn-primary:hover {
-  background-color: #0056b3;
+.btn-compare {
+  background-color: #28a745;
+  color: white;
 }
 
-.stats {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.stat-item {
-  display: flex;
-  flex-direction: column;
-}
-
-.stat-value {
+/* botão de sair do card*/
+.delete-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  font-size: 16px;
   font-weight: bold;
-  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
-.stat-label {
-  font-size: 0.7rem;
-  color: #aaa;
+.card:hover .delete-btn {
+  opacity: 1;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+  transform: scale(1.1);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .card {
+    width: 180px;
+  }
+
+  .card-img {
+    height: 120px;
+  }
 }

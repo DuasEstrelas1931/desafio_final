@@ -1,44 +1,34 @@
 .carousel-container {
   position: relative;
-  max-width: 100%;
+  max-width: 1200px;
   margin: 2rem auto;
-  padding: 0 50px; /* Espaço para os botões */
+  padding: 0 50px;
 }
 
 .carousel-wrapper {
   width: 100%;
   overflow: hidden;
-  position: relative;
 }
 
 .carousel {
   display: flex;
-  gap: 1rem;
+  gap: 16px;
   padding: 1rem 0;
-  scroll-behavior: smooth;
-  transition: transform 0.5s ease;
-  width: max-content; /* Permite que o carrossel expanda */
+  transition: scroll-behavior 0.5s ease;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none; /* Esconde a scrollbar */
 }
 
 app-player-card {
   flex: 0 0 220px;
-  transition: all 0.3s ease;
-  opacity: 0.8;
-  transform: scale(0.95);
+  scroll-snap-align: start;
 }
 
-app-player-card.active {
-  opacity: 1;
-  transform: scale(1);
-  box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
-}
-
-app-player-card:hover {
-  opacity: 1;
-  transform: scale(1.02);
-}
-
-/* Botões de navegação */
 .carousel-button {
   position: absolute;
   top: 50%;
@@ -52,13 +42,17 @@ app-player-card:hover {
   font-size: 1.5rem;
   cursor: pointer;
   z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transition: all 0.3s;
 }
 
-.carousel-button:hover {
+.carousel-button:hover:not(:disabled) {
   background: rgba(0, 123, 255, 0.9);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
 }
 
 .carousel-button.prev {
@@ -69,11 +63,10 @@ app-player-card:hover {
   right: 0;
 }
 
-/* Indicadores */
 .carousel-indicators {
   display: flex;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 8px;
   margin-top: 1rem;
 }
 
@@ -92,16 +85,15 @@ app-player-card:hover {
   transform: scale(1.2);
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
   .carousel-container {
-    max-width: 100%;
+    padding: 0 30px;
   }
-
+  
   app-player-card {
-    width: 180px;
+    flex: 0 0 180px;
   }
-
+  
   .carousel-button {
     width: 30px;
     height: 30px;

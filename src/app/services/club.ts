@@ -9,6 +9,7 @@ export interface Club {
 }
 
 @Injectable({ providedIn: 'root' })
+
 export class ClubService {
   private http = inject(HttpClient);
   private API_URL = 'http://localhost:3001/api/clubs';

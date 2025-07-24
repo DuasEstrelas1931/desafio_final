@@ -13,7 +13,7 @@ import { Player } from '../../models/player.model';
 export class PlayerForm {
   @Output() playerAdded = new EventEmitter<Player>();
 
-  player: Player = {
+  player: Omit<Player, 'id'> = {
     name: '',
     club: '',
     nationality: '',
@@ -29,9 +29,10 @@ export class PlayerForm {
       Physical: 0
     }
   };
-  addPlayer() {
+
+   addPlayer() {
     if (this.player.name && this.player.club) {
-      this.playerAdded.emit(this.player);
+      this.playerAdded.emit(this.player); // Emite sem id
       this.resetForm();
     }
   }

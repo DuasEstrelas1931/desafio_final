@@ -17,15 +17,15 @@ export class PlayerService {
     return this.http.get<Player>(`${this.API_URL}/${id}`);
   }
 
-  addPlayer(player: Player): Observable<any> {
-    return this.http.post(this.API_URL, player);
-  }
+  addPlayer(player: Omit<Player, 'id'>): Observable<Player> {
+  return this.http.post<Player>(this.API_URL, player);
+}
 
   updatePlayer(id: number, stats: any): Observable<any> {
     return this.http.patch(`${this.API_URL}/${id}`, { statistics: stats });
   }
 
-  deletePlayer(id: number): Observable<any> {
-    return this.http.delete(`${this.API_URL}/${id}`);
-  }
+  deletePlayer(id: number): Observable<void> {
+  return this.http.delete<void>(`${this.API_URL}/${id}`);
+}
 }

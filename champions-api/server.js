@@ -2,12 +2,21 @@ import express from "express";
 import cors from "cors";
 import { readFileSync, writeFileSync } from "fs";
 import { v4 as uuidv4 } from "uuid";
+import path from "path";
 
 const app = express();
 const PORT = 3001;
 
 app.use(cors());
 app.use(express.json());
+
+// Libera a pasta "logo" para acesso público
+const __filename = new URL(import.meta.url).pathname;
+const __dirname = path.dirname(__filename);
+app.use("/api/clubs/logo", express.static(path.join(__dirname, "logo")));
+// como usar a url do logo
+// Exemplo: http://localhost:3001/api/clubs/logo/real_madrid.png
+
 
 const playersPath = "./data/players.json";
 const clubsPath = "./data/clubs.json";

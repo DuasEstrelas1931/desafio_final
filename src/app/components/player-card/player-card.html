@@ -1,25 +1,23 @@
 <div class="card">
-  <img [src]="getPlayerImage()" alt="{{ player.name }}" class="card-img" />
+  <!-- Botão de deletar (X) no canto superior direito -->
+  <button class="delete-btn" (click)="onDelete()" *ngIf="player.id">×</button>
+
+  <img [src]="getPlayerImage()" alt="{{ player.name }}" class="card-img">
   <div class="card-body">
     <h4>{{ player.name }}</h4>
     <p>{{ player.position }} | {{ player.club }}</p>
     <p>{{ player.nationality }}</p>
 
-    <div class="stats">
-      <div class="stat-item">
-        <span class="stat-value">{{ getPlayerStatistics().Overall }}</span>
-        <span class="stat-label">OVR</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-value">{{ getPlayerStatistics().Pace }}</span>
-        <span class="stat-label">PAC</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-value">{{ getPlayerStatistics().Shooting }}</span>
-        <span class="stat-label">SHO</span>
-      </div>
+    <div class="quick-stats">
+      <span>{{ player.statistics.Overall }} OVR</span>
+      <span>{{ player.statistics.Pace }} PAC</span>
     </div>
 
-    <button (click)="selectPlayer(player)" class="btn btn-primary">Selecionar</button>
+    <div class="actions">
+      <button class="btn-select" (click)="onSelect()">
+        {{ isSelected ? '✓ Selecionado' : 'Selecionar' }}
+      </button>
+      <button class="btn-compare" (click)="onCompare()">Comparar</button>
+    </div>
   </div>
 </div>

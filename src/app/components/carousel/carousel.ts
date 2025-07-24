@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit,  
+  AfterViewInit, ElementRef, ViewChild 
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Player } from '../../models/player.model';
 import { PlayerCard } from '../player-card/player-card';
@@ -14,8 +16,10 @@ import { PlayerService } from '../../services/player';
 })
 export class Carousel implements OnInit {
   @Input() players: Player[] = [];
+  @ViewChild('carousel') carouselRef!: ElementRef;
   currentIndex = 0;
-  visibleCards = 5; // Quantidade de cards visíveis
+  cardWidth = 220; // Largura do card + margens
+  visibleCards = 10; // Quantidade de cards visíveis
 
 
   constructor(private playerService: PlayerService) {}
@@ -30,36 +34,41 @@ export class Carousel implements OnInit {
     });
   }
 
+  ngAfterViewInit() {
+    this.updateCarousel();
+  }
+
   
 
-  next() {
-    if (this.players.length > this.visibleCards) {
-      this.currentIndex = (this.currentIndex + 1) % (this.players.length - this.visibleCards + 1);
-      this.scrollToCurrent();
-    }
+   next() {
+    if (this.players.length <= this.visibleCards) return;
+    
+    this.currentIndex = Math.min(
+      this.currentIndex + 1,
+      this.players.length - this.visibleCards
+    );
+    this.updateCarousel();
   }
 
   prev() {
-    if (this.players.length > this.visibleCards) {
-      this.currentIndex = (this.currentIndex - 1 + (this.players.length - this.visibleCards + 1)) % 
-                         (this.players.length - this.visibleCards + 1);
-      this.scrollToCurrent();
-    }
+    this.currentIndex = Math.max(this.currentIndex - 1, 0);
+    this.updateCarousel();
   }
 
   public goToSlide(index: number) {
     this.currentIndex = index;
-    this.scrollToCurrent();
+    this.updateCarousel();
   }
 
-  private scrollToCurrent() {
-    const carousel = document.querySelector('.carousel') as HTMLElement;
-    if (carousel) {
-      const cardWidth = 220; // Largura fixa do card + gap
-      carousel.scrollTo({
-        left: this.currentIndex * cardWidth,
-        behavior: 'smooth'
-      });
-    }
+  private updateCarousel() {
+   const scrollPosition = this.currentIndex * this.cardWidth;
+    this.carouselRef.nativeElement.scrollTo({
+      left: scrollPosition,
+      behavior: 'smooth'
+    });
+  }
+
+  get totalSlides(): number {
+    return Math.max(0, this.players.length - this.visibleCards + 1);
   }
 }

@@ -11,12 +11,33 @@ import { Player } from '../../models/player.model';
 })
 export class PlayerCard {
   @Input() player!: Player;
-  @Output() delete = new EventEmitter<number>();
+ @Output() deleted = new EventEmitter<number>();
   @Output() edit = new EventEmitter<Player>();
+  @Input() isSelected = false;
+  @Input() isComparison = false;
+  @Output() selected = new EventEmitter<Player>();
+  @Output() compared = new EventEmitter<Player>();
+
+  showStats = false;
+
+  toggleStats() {
+    this.showStats = !this.showStats;
+  }
+
+  onSelect() {
+    this.selected.emit(this.player);
+  }
+
+  onCompare() {
+    this.compared.emit(this.player);
+  }
 
   onDelete() {
-    this.delete.emit(this.player.id);
+   if (this.player.id) {
+    this.deleted.emit(this.player.id);
+    }
   }
+  
   onEdit() {
     this.edit.emit(this.player);
   }
@@ -37,6 +58,17 @@ export class PlayerCard {
   selectPlayer(player: Player) {
     this.edit.emit(player);
   }
-  
+
+  getStatsArray() {
+  return [
+    { name: 'Pace', value: this.player.statistics.Pace },
+    { name: 'Shooting', value: this.player.statistics.Shooting },
+    { name: 'Passing', value: this.player.statistics.Passing },
+    { name: 'Dribbling', value: this.player.statistics.Dribbling },
+    { name: 'Defending', value: this.player.statistics.Defending },
+    { name: 'Physical', value: this.player.statistics.Physical }
+  ];
+}
+
 }
 

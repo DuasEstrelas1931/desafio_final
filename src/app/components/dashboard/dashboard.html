@@ -6,17 +6,49 @@
   <h3>Jogadores em Destaque</h3>
   <app-carousel [players]="featuredPlayers"></app-carousel>
 
+  <!-- Seção de Comparação (aparece quando 2 jogadores são selecionados) -->
+  <div class="comparison-section" *ngIf="comparedPlayers.length === 2">
+  <div class="comparison-header">
+    <h3>Comparação de Jogadores</h3>
+    <button class="btn-exit" (click)="clearComparison()">Sair da comparação</button>
+  </div>
+    <div class="comparison-cards">
+      <app-player-card
+        [player]="comparedPlayers[0]"
+        [isSelected]="true"
+        [isComparison]="true"
+      >
+      </app-player-card>
+
+      <div class="vs">VS</div>
+
+      <app-player-card
+        [player]="comparedPlayers[1]"
+        [isSelected]="true"
+        [isComparison]="true"
+      >
+      </app-player-card>
+    </div>
+  </div>
+
   <h3>Todos os Jogadores</h3>
   <div class="players-grid">
-    <ng-container *ngFor="let player of players">
+    <ng-container *ngIf="players.length === 0">
+      <p>Nenhum jogador encontrado.</p>
+    </ng-container>
+    <ng-container *ngIf="players.length > 0">
       <app-player-card
+        *ngFor="let player of players"
         [player]="player"
-        (delete)="onDeletePlayer($event)"
-        (edit)="onEditPlayer($event)">
-      </app-player-card>
+        [isSelected]="isPlayerSelected(player.id)"
+        [isComparison]="isPlayerCompared(player.id)"
+        (selected)="onSelectPlayer($event)"
+        (compared)="onComparePlayer($event)"
+        (deleted)="onDeletePlayer($event)">
+      </app-player-card>  
     </ng-container>
   </div>
 
-  <h3>Clubes Participantes</h3>
+  
   <app-clubs></app-clubs>
 </div>

@@ -12,22 +12,23 @@ import { Player } from '../../models/player.model';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule,  PlayerForm, Carousel, Clubs,  PlayerCard ],
+  imports: [CommonModule, PlayerForm, Carousel, Clubs, PlayerCard],
   templateUrl: './dashboard.html',
   styleUrls: ['./dashboard.css'],
 })
 export class Dashboard implements OnInit {
-
   players: Player[] = [];
   featuredPlayers: Player[] = [];
+  selectedPlayers: Player[] = [];
+  comparedPlayers: Player[] = [];
 
-   constructor(private playerService: PlayerService) {}
+  constructor(private playerService: PlayerService) {}
 
-   ngOnInit() {
-     this.loadPlayers();
-   }
+  ngOnInit() {
+    this.loadPlayers();
+  }
 
-   loadPlayers() {
+  loadPlayers() {
     this.playerService.getPlayers().subscribe({
       next: (players) => {
         this.players = players;
@@ -37,11 +38,11 @@ export class Dashboard implements OnInit {
         console.error('Error loading players:', err);
         // Carrega dados padrão caso a API falhe
         this.loadDefaultPlayers();
-      }
+      },
     });
   }
 
-    loadDefaultPlayers() {
+  loadDefaultPlayers() {
     this.players = [
       // Mesmos jogadores padrão do carrossel
     ];
@@ -49,17 +50,30 @@ export class Dashboard implements OnInit {
   }
 
   onPlayerAdded(newPlayer: Player) {
-    this.players.unshift(newPlayer); // Adiciona no início
-    this.featuredPlayers = this.players.slice(0, 5); // Atualiza carrossel
+    this.playerService.addPlayer(newPlayer).subscribe({
+      next: (playerWithId) => {
+        // O backend retornará o jogador COM id gerado
+        this.players.unshift(playerWithId); // Adiciona à lista
+      },
+      error: (err) => console.error('Erro ao adicionar jogador:', err),
+    });
   }
 
   onDeletePlayer(playerId: number) {
-    this.players = this.players.filter(p => p.id !== playerId);
-    this.updateFeaturedPlayers();
+  if (confirm('Tem certeza que deseja excluir este jogador?')) {
+    this.playerService.deletePlayer(playerId).subscribe({
+      next: () => {
+        this.players = this.players.filter(p => p.id !== playerId);
+        this.selectedPlayers = this.selectedPlayers.filter(p => p.id !== playerId);
+        this.comparedPlayers = this.comparedPlayers.filter(p => p.id !== playerId);
+      },
+      error: (err) => console.error('Erro ao excluir jogador:', err)
+    });
   }
+}
 
   onEditPlayer(updatedPlayer: Player) {
-    const index = this.players.findIndex(p => p.id === updatedPlayer.id);
+    const index = this.players.findIndex((p) => p.id === updatedPlayer.id);
     if (index !== -1) {
       this.players[index] = updatedPlayer;
       this.updateFeaturedPlayers();
@@ -70,6 +84,50 @@ export class Dashboard implements OnInit {
     this.featuredPlayers = [...this.players].reverse().slice(0, 3);
   }
 
+  isPlayerSelected(playerId: number | undefined): boolean {
+    return playerId
+      ? this.selectedPlayers.some((p) => p.id === playerId)
+      : false;
+  }
 
+  isPlayerCompared(playerId: number | undefined): boolean {
+    return playerId
+      ? this.comparedPlayers.some((p) => p.id === playerId)
+      : false;
+  }
+  clearComparison() {
+    this.comparedPlayers = []; // Limpa a lista de jogadores comparados
+  }
 
+  onSelectPlayer(player: Player) {
+    const index = this.selectedPlayers.findIndex((p) => p.id === player.id);
+
+    if (index >= 0) {
+      this.selectedPlayers.splice(index, 1); // Deseleciona se já estiver selecionado
+    } else {
+      if (this.selectedPlayers.length < 2) {
+        this.selectedPlayers.push(player);
+      } else {
+        // Limita a 2 jogadores selecionados (substitui o mais antigo)
+        this.selectedPlayers.shift();
+        this.selectedPlayers.push(player);
+      }
+    }
+  }
+
+  onComparePlayer(player: Player) {
+    const index = this.comparedPlayers.findIndex((p) => p.id === player.id);
+
+    if (index >= 0) {
+      this.comparedPlayers.splice(index, 1); // Remove da comparação se já estiver
+    } else {
+      if (this.comparedPlayers.length < 2) {
+        this.comparedPlayers.push(player);
+      } else {
+        // Limita a 2 jogadores para comparação (substitui o mais antigo)
+        this.comparedPlayers.shift();
+        this.comparedPlayers.push(player);
+      }
+    }
+  }
 }

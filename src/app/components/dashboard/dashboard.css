@@ -23,8 +23,77 @@ h2 {
   padding: 1rem;
 }
 
+/* Estilos para a seção de comparação */
+.comparison-section {
+  background: rgba(0, 0, 50, 0.2);
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border: 1px solid rgba(0, 123, 255, 0.3);
+}
+
+.comparison-cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.vs {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #007bff;
+  padding: 0 2rem;
+}
+
+/* Melhorias no grid de jogadores */
+.players-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem 0;
+}
+
+.comparison-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.btn-exit {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-exit:hover {
+  background-color: #c82333;
+  transform: scale(1.05);
+}
+
+/* Ajustes para mobile */
 @media (max-width: 768px) {
+  .comparison-cards {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .vs {
+    padding: 1rem 0;
+    transform: rotate(90deg);
+  }
+
   .players-grid {
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   }
 }
+
+
+

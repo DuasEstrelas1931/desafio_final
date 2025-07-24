@@ -1,0 +1,72 @@
+.home-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.video-background iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Conteúdo ocupa todo o espaço disponível exceto o footer */
+.home-content {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.hamburger-menu {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.menu-options {
+  position: absolute;
+  top: 60px;
+  right: 30px;
+  background-color: rgba(0, 0, 50, 0.85);
+  border-radius: 10px;
+  list-style: none;
+  padding: 10px 20px;
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 10;
+}
+
+.menu-options li {
+  color: white;
+  cursor: pointer;
+}
+
+.menu-options.show {
+  display: flex;
+}
+
+.welcome-card {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}

@@ -1,0 +1,15 @@
+<div class="modal-overlay" (click)="close()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+    <h2><i class="fas fa-file-contract"></i> Termos de Uso e LGPD</h2>
+      <button class="close-btn" (click)="close()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p>Aqui vão os termos de uso e a política de privacidade conforme a LGPD.</p>
+      <p>Texto detalhado explicando como os dados serão usados, armazenados, etc.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn accept-btn" (click)="acceptTerms()">Aceitar Termos</button>
+    </div>
+  </div>
+</div>

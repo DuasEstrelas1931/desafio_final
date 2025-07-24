@@ -1,0 +1,30 @@
+<div class="login-container champions-body">
+  <canvas id="star-canvas"></canvas>
+
+  <div class="content-box">
+    <div class="logo">
+      <img src="assets/img/trofeu.png" alt="logo trofeu" />
+    </div>
+
+    <h2 class="champions-title">Login da Champions</h2>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="username"><i class="fas fa-user"></i> Usuário:</label>
+        <input type="text" id="username" formControlName="username" />
+      </div>
+      <div class="form-group">
+        <label for="password"><i class="fas fa-lock"></i> Senha:</label>
+        <input type="password" id="password" formControlName="password" />
+      </div>
+
+      <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+      <div class="button">
+        <button type="submit" class="btn">
+          <i class="fas fa-futbol icon-spin"></i> Login
+        </button>
+      </div>
+    </form>
+    <p>Não tem uma conta? <a routerLink="/register">Registre-se</a></p>
+  </div>
+</div>

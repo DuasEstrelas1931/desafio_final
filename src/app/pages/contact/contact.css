@@ -162,12 +162,12 @@ button[type="submit"]:hover {
   .contact-container {
     flex-direction: column;
   }
-  
+
   .champions-image {
     order: -1;
     padding: 2rem 1rem;
   }
-  
+
   .contact-form {
     padding: 2rem;
   }
@@ -249,32 +249,21 @@ button[type="submit"]:hover {
     flex-direction: column;
     min-height: auto;
   }
-  
+
   .image-info-container {
     order: -1;
   }
-  
+
   .champions-image {
     padding: 1.5rem;
   }
-  
+
   .champions-image img {
     max-height: 200px;
   }
-  
+
   .contact-info {
     padding: 1.5rem;
   }
 }
 
-
-
-@keyframes pulse-gold {
-  0% { filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5)); }
-  50% { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.9)); }
-  100% { filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5)); }
-}
-
-.champions-image img {
-  animation: pulse-gold 3s infinite;
-}

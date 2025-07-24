@@ -1,3 +1,5 @@
+<app-header *ngIf="!isLoginOrRegisterPage()"></app-header>
 <app-chatbot></app-chatbot>
 
 <router-outlet />
+<app-footer *ngIf="!isLoginOrRegisterPage()"></app-footer>

@@ -1,16 +1,26 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
-  imports: [],
+  imports: [ CommonModule  ],
   templateUrl: './header.html',
-  styleUrls: ['./header.scss']
+  styleUrls: ['./header.css']
 })
 export class Header {
-  menuVisible = false;
+  menuVisible: boolean = false;
+  isHomePage: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+        this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.isHomePage = event.url === '/' || event.url === '/home';
+      }
+    });
+  }
+  
+
 
   toggleMenu() {
     this.menuVisible = !this.menuVisible;
@@ -25,4 +35,6 @@ export class Header {
     localStorage.removeItem('user');
     this.router.navigate(['/login']);
   }
+
+  
 }

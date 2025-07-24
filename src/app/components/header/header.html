@@ -1,17 +1,27 @@
-<header class="header">
-  <div class="logo">
-    <img src="assets/img/logo-ch.webp" alt="Champions League Logo" />
+<header class="header" [ngClass]="{'header-absolute': isHomePage}">
+  <div class="logo" (click)="goTo('home')" >
+    <img src="/assets/img/logo-ChatGPT.png" alt="Champions League Logo" />
   </div>
 
   <div class="hamburger" (click)="toggleMenu()">&#9776;</div>
 
   <nav class="nav-menu" [class.show]="menuVisible">
     <ul>
-      <li (click)="goTo('home')">Home</li>
-      <li (click)="goTo('sobre')">Sobre</li>      
-      <li (click)="goTo('dashboard')">Dashboard</li>
-      <li (click)="goTo('contato')">Contato</li>
-      <li (click)="logout()">Sair</li>
+      <li (click)="goTo('home')">
+        <i class="fas fa-home"></i> Home
+      </li>
+      <li (click)="goTo('sobre')">
+        <i class="fas fa-info-circle"></i> Sobre
+      </li>
+      <li (click)="goTo('dashboard')">
+        <i class="fas fa-chart-bar"></i> Dashboard
+      </li>
+      <li (click)="goTo('contato')">
+        <i class="fas fa-envelope"></i> Contato
+      </li>
+      <li (click)="logout()">
+        <i class="fas fa-sign-out-alt fa-logout"></i> Sair
+      </li>
     </ul>
   </nav>
 </header>

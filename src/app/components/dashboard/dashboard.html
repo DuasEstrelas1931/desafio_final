@@ -1,10 +1,10 @@
 <div class="dashboard-container">
   <h2>🏆 Timaço da Champions League</h2>
 
-  <app-player-form (playerAdded)="onPlayerAdded($event)"></app-player-form>
-
   <h3>Jogadores em Destaque</h3>
   <app-carousel [players]="featuredPlayers"></app-carousel>
+  
+  <app-player-form (playerAdded)="onPlayerAdded($event)"></app-player-form>
 
   <!-- Seção de Comparação (aparece quando 2 jogadores são selecionados) -->
   <div class="comparison-section" *ngIf="comparedPlayers.length === 2">

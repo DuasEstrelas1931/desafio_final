@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "@fortawesome/fontawesome-free/css/all.css";
-
+@import '@fortawesome/fontawesome-free/css/all.min.css';
 
 :root {
   --champions-blue: #0046ad;
@@ -34,7 +34,7 @@ body, html {
 }
 
 .champions-bg-image {
-  background-image: url('assets/img/champions-bg.png');
+  background-image: url('assets/img/bg_2.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

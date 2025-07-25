@@ -3,7 +3,7 @@
 
   <h3>Jogadores em Destaque</h3>
   <app-carousel [players]="featuredPlayers"></app-carousel>
-  
+
   <app-player-form (playerAdded)="onPlayerAdded($event)"></app-player-form>
 
   <!-- Seção de Comparação (aparece quando 2 jogadores são selecionados) -->
@@ -31,24 +31,68 @@
     </div>
   </div>
 
-  <h3>Todos os Jogadores</h3>
+ <div class="players-section">
+  <div class="filters-container">
+    <h3>Todos os Jogadores</h3>
+
+    <div class="filter-controls">
+      <!-- Filtro por nome -->
+      <div class="filter-group">
+        <label for="nameFilter">Nome:</label>
+        <input type="text" id="nameFilter" [(ngModel)]="nameFilter"
+               placeholder="Buscar jogador..." (input)="filterPlayers()">
+      </div>
+
+      <!-- Filtro por posição -->
+      <div class="filter-group">
+        <label for="positionFilter">Posição:</label>
+        <select id="positionFilter" [(ngModel)]="positionFilter" (change)="filterPlayers()">
+          <option value="">Todas</option>
+          <option *ngFor="let position of positions" [value]="position">{{position}}</option>
+        </select>
+      </div>
+
+      <!-- Filtro por clube -->
+      <div class="filter-group">
+        <label for="clubFilter">Clube:</label>
+        <select id="clubFilter" [(ngModel)]="clubFilter" (change)="filterPlayers()">
+          <option value="">Todos</option>
+          <option *ngFor="let club of clubs" [value]="club">{{club}}</option>
+        </select>
+      </div>
+
+      <!-- Filtro por overall -->
+      <div class="filter-group">
+        <label for="overallFilter">OVR:</label>
+        <select id="overallFilter" [(ngModel)]="overallFilter" (change)="filterPlayers()">
+          <option value="0">Todos</option>
+          <option value="85">85+</option>
+          <option value="80">80+</option>
+          <option value="75">75+</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
   <div class="players-grid">
-    <ng-container *ngIf="players.length === 0">
-      <p>Nenhum jogador encontrado.</p>
+    <ng-container *ngIf="filteredPlayers.length === 0">
+      <p class="no-results">Nenhum jogador encontrado com os filtros atuais.</p>
     </ng-container>
-    <ng-container *ngIf="players.length > 0">
+
+    <ng-container *ngIf="filteredPlayers.length > 0">
       <app-player-card
-        *ngFor="let player of players"
+        *ngFor="let player of filteredPlayers"
         [player]="player"
         [isSelected]="isPlayerSelected(player.id)"
         [isComparison]="isPlayerCompared(player.id)"
         (selected)="onSelectPlayer($event)"
         (compared)="onComparePlayer($event)"
         (deleted)="onDeletePlayer($event)">
-      </app-player-card>  
+      </app-player-card>
     </ng-container>
   </div>
+</div>
 
-  
-  <app-clubs></app-clubs>
+
+ 
 </div>

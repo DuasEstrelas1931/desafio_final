@@ -19,7 +19,7 @@ export class App {
    
   isLoginOrRegisterPage(): boolean {
     const currentRoute = this.router.url;
-    return ['/login', '/cadastro'].some(route => currentRoute.includes(route));
+    return ['/login', '/register'].some(route => currentRoute.includes(route));
   }
 
 }

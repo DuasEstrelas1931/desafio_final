@@ -14,7 +14,7 @@ import { TermsModalComponent } from '../../components/terms-modal/terms-modal';
   templateUrl: './register.html',
   styleUrl: './register.css'
 })
-export class RegisterComponent {
+export class Register {
     user:User = {
       email: '',
       password: '',
@@ -27,11 +27,13 @@ export class RegisterComponent {
   constructor(private authService: AuthService, private router: Router  ) {}
 
   openTermsModal(): void {
+     console.log('Abrindo modal...'); // Verifique no console do navegador
     this.showTermsModal = true;
     // Abre o modal de termos
   }
 
   closeTermsModal(): void {
+    console.log('Fechando modal...');
     this.showTermsModal = false;
     // Fecha o modal de termos
   }

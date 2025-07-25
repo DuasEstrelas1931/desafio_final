@@ -1,7 +1,9 @@
-import { Component, inject, OnInit, OnDestroy } from '@angular/core';
+import { Club } from './../../models/club.model';
+import { Component, inject, OnInit, OnDestroy, input, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ClubService, Club } from '../../services/club';
+import { ClubService } from '../../services/club';
 import { interval, Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-clubs',
@@ -11,6 +13,8 @@ import { interval, Subscription } from 'rxjs';
   styleUrls: ['./clubs.css']
 })
 export class Clubs implements OnInit, OnDestroy {
+@Input() Club!: Club
+
   private clubService = inject(ClubService);
   clubs: Club[] = [];
   duplicatedClubs: Club[] = [];
@@ -24,6 +28,10 @@ export class Clubs implements OnInit, OnDestroy {
       this.duplicatedClubs = [...data, ...data]; // Duplica para efeito infinito
       this.startCarousel();
     });
+  }
+
+  getPlayerImage() {
+    return this.Club.logo || 'assets/images/default-player.png';
   }
 
   startCarousel() {
@@ -44,4 +52,6 @@ export class Clubs implements OnInit, OnDestroy {
       this.intervalSub.unsubscribe();
     }
   }
+
+  
 }

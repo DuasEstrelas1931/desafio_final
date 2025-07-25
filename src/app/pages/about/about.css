@@ -1,0 +1,204 @@
+.champions-container  {
+  display: block;
+  width: 100%;
+   margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: #1a3e8c;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.section-subtitle {
+  font-size: 2rem;
+  color: #1a3e8c;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+/* Estilo base para ambas as listas */
+.facts-list,
+.scorers-list,
+.champions-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 1.5rem 0;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* Itens das listas */
+.facts-list li,
+.scorers-list li,
+.champions-list li{
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 0.8rem;
+}
+.champions-list li::before {
+  content: "🏆";
+  position: absolute;
+  left: 0;
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+}
+
+/* Ícones para a lista de fatos */
+.facts-list li::before {
+  content: "✔"; /* Ícone de estrela do Font Awesome */
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  color: #d4af37; /* Dourado */
+  position: absolute;
+  left: 0;
+  top: 0.2rem;
+}
+
+/* Ícones para a lista de artilheiros */
+.scorers-list li::before {
+  content: "⚽"; /* Ícone de chuteira do Font Awesome */
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  color: #1a3e8c; /* Azul da Champions */
+  position: absolute;
+  left: 0;
+}
+
+/* Destaque para os textos em negrito */
+.facts-list strong,
+.scorers-list strong
+.champions-list strong {
+  color: #1a3e8c; /* Azul da Champions */
+  font-weight: 600;
+}
+
+/* Efeito hover para interatividade */
+.facts-list li:hover::before,
+.scorers-list li:hover::before
+.champions-list li:hover::before {
+  transform: scale(1.2);
+  transition: transform 0.2s ease;
+}
+
+.section-text {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.divider {
+  height: 3px;
+  background: linear-gradient(90deg, #1a3e8c, #d4af37);
+  margin: 3rem 0;
+  width: 100%;
+}
+
+/* Layout Estádio */
+.stadium-content {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+
+.stadium-image {
+  width: 50%;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.stadium-text {
+  width: 50%;
+}
+
+/* Animações */
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+.animate-pop-in {
+  animation: popIn 0.8s cubic-bezier(0.2, 0.8, 0.4, 1.2) forwards;
+}
+
+.animate-scale-x {
+  animation: scaleX 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popIn {
+  0% { 
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  80% { 
+    transform: scale(1.05);
+  }
+  100% { 
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleX {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.7rem;
+  }
+  
+  .section-text {
+    font-size: 1.1rem;
+  }
+  
+  .stadium-content {
+    flex-direction: column;
+  }
+  
+  .stadium-image,
+  .stadium-text {
+    width: 100%;
+  }
+   .facts-list,
+  .scorers-list,
+  .champions-list {
+    font-size: 1rem;
+    padding-left: 1.5rem;
+  }
+  
+  .scorers-list strong,
+  .champions-list strong {
+    min-width: 120px;
+  }
+
+}

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 
@@ -9,12 +9,19 @@ import { Router } from '@angular/router';
   templateUrl: './home.html',
   styleUrls: ['./home.css']
 })
-export class Home {
-  username = localStorage.getItem('username') || 'Convidado';
-
+export class Home implements OnInit {
+  username = 'Convidado';
   menuVisible = false;
 
   constructor(private router: Router) {}
+
+  ngOnInit() {
+    const currentUserString = localStorage.getItem('current_champion');
+    if (currentUserString) {
+      const currentUser = JSON.parse(currentUserString);
+      this.username = currentUser.username || 'Convidado';
+    }
+  }
 
   toggleMenu() {
     this.menuVisible = !this.menuVisible;
@@ -28,5 +35,5 @@ export class Home {
     localStorage.removeItem('username');
     this.router.navigate(['/login']);
   }
-  
 }
+

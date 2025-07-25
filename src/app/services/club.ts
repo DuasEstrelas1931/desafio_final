@@ -1,12 +1,9 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Club } from '../models/club.model';
 
-export interface Club {
-  id: number;
-  name: string;
-  logo: string;
-}
+
 
 @Injectable({ providedIn: 'root' })
 
@@ -17,4 +14,7 @@ export class ClubService {
   getClubs(): Observable<Club[]> {
     return this.http.get<Club[]>(this.API_URL);
   }
+
+  
+  
 }

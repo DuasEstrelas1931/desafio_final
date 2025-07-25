@@ -12,11 +12,11 @@ export class TermsModalComponent {
 
   acceptTerms(): void {
     this.accepted.emit();
-    new this.closed();
+    this.closed.emit();
   }
 
   close(): void {
     this.closed.emit();
-    // Aqui você pode adicionar lógica adicional se necessário ao fechar o modal
+    
   }
 }

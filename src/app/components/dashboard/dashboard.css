@@ -78,6 +78,60 @@ h2 {
   transform: scale(1.05);
 }
 
+/* Estilos para a seção de jogadores */
+.players-section {
+  padding: 20px;
+}
+
+.filters-container {
+  margin-bottom: 30px;
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.filter-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-group label {
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #333;
+}
+
+.filter-group input,
+.filter-group select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.players-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px;
+  color: #666;
+  font-size: 1.1rem;
+}
+
+
 /* Ajustes para mobile */
 @media (max-width: 768px) {
   .comparison-cards {
@@ -92,6 +146,14 @@ h2 {
 
   .players-grid {
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+
+   .filter-controls {
+    grid-template-columns: 1fr;
+  }
+  
+  .players-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
 }
 

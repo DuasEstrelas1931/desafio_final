@@ -39,7 +39,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 })
 
 
-export class LoginComponent implements AfterViewInit {
+export class Login implements AfterViewInit {
     @ViewChild('starCanvas', { static: false }) starCanvasRef!: ElementRef<HTMLCanvasElement>;
   loginForm: any; // Declare mas não inicialize
 

@@ -8,11 +8,15 @@ import { Carousel } from '../carousel/carousel';
 import { Clubs } from '../clubs/clubs';
 import { HttpClientModule } from '@angular/common/http';
 import { Player } from '../../models/player.model';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, PlayerForm, Carousel, Clubs, PlayerCard],
+  imports: [
+    CommonModule, PlayerForm,
+    Carousel,  PlayerCard, FormsModule
+  ],
   templateUrl: './dashboard.html',
   styleUrls: ['./dashboard.css'],
 })
@@ -21,6 +25,15 @@ export class Dashboard implements OnInit {
   featuredPlayers: Player[] = [];
   selectedPlayers: Player[] = [];
   comparedPlayers: Player[] = [];
+  filteredPlayers: Player[] = [];
+  positionFilter: any;
+  clubFilter: any;
+
+    // Opções para filtros
+  positions: string[] = ['GK', 'DEF', 'MID', 'ATT'];
+  clubs: string[] = [];
+  nameFilter: any;
+  overallFilter: any;
 
   constructor(private playerService: PlayerService) {}
 
@@ -32,15 +45,43 @@ export class Dashboard implements OnInit {
     this.playerService.getPlayers().subscribe({
       next: (players) => {
         this.players = players;
-        this.featuredPlayers = players.slice(0, 5); // Mostra os primeiros 5 no carrossel
+        this.filteredPlayers = [...players];
+        this.extractClubs();
       },
-      error: (err) => {
-        console.error('Error loading players:', err);
-        // Carrega dados padrão caso a API falhe
-        this.loadDefaultPlayers();
-      },
+      error: (err) => console.error('Error loading players', err)
     });
   }
+
+  extractClubs() {
+    const uniqueClubs = new Set<string>();
+    this.players.forEach(player => {
+      if (player.club) uniqueClubs.add(player.club);
+    });
+    this.clubs = Array.from(uniqueClubs).sort();
+  }
+
+  filterPlayers() {
+    this.filteredPlayers = this.players.filter(player => {
+      // Filtro por nome
+      const nameMatch = player.name.toLowerCase().includes(this.nameFilter.toLowerCase());
+
+      // Filtro por posição
+      const positionMatch = !this.positionFilter ||
+        player.position === this.positionFilter;
+
+      // Filtro por clube
+      const clubMatch = !this.clubFilter ||
+        player.club === this.clubFilter;
+
+      // Filtro por overall
+      const overallMatch = player.statistics.Overall >= +this.overallFilter;
+
+      return nameMatch && positionMatch && clubMatch && overallMatch;
+    });
+  }
+
+
+
 
   loadDefaultPlayers() {
     this.players = [
